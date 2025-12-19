@@ -5,6 +5,7 @@ import About from './pages/About_Us'
 import Contact from './pages/Contact'
 import Cart from './pages/Cart'
 import Navbar from './components/navbar'
+import Footer from './components/footer'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
+      <Footer />
     </>
   )
 }
