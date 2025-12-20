@@ -1,5 +1,13 @@
+import CategoryFilter from "../components/menu/CategoryFilter"
+import MenuGrid from "../components/menu/MenuGrid"
+
 function Menu() {
-  return <h2>Here is your Menu</h2>
+  return (
+    <>
+    <CategoryFilter/>
+    <MenuGrid/>
+    </>
+  )
 }
 
 export default Menu
