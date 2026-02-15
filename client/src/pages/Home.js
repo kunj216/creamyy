@@ -8,7 +8,7 @@ function Home() {
 
   const [recommendations, setRecommendations] = useState([]);
   const [topSelling, setTopSelling] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchHybrid = async () => {
