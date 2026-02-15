@@ -38,3 +38,6 @@ app.use("/api/orders", orderRoutes);
 const adminRoutes = require("./routes/adminRoutes");
 
 app.use("/api/admin", adminRoutes);
+
+const cors = require("cors");
+app.use(cors());
