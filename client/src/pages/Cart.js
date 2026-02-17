@@ -30,7 +30,7 @@ function Cart() {
         }
       );
 
-      toast("Order placed successfully!");
+      toast.success("Order placed successfully!");
       clearCart();
     } catch (error) {
       console.log(error);

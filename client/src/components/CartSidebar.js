@@ -36,7 +36,7 @@ function CartSidebar() {
         }
       );
 
-      toast("Order placed successfully!");
+      toast.success("Order placed successfully!");
       clearCart();
       closeCart();
     } catch (error) {
