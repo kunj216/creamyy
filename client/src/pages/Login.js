@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
-
+import toast from "react-hot-toast";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,13 +12,31 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { data } = await api.post("/auth/login", {
-      email,
-      password
-    });
+    try {
+      const { data } = await api.post("/auth/login", {
+        email,
+        password,
+      });
 
-    login(data);
-    navigate("/");
+      login(data);
+      navigate("/");
+    } catch (error) {
+      const message = error.response?.data?.message;
+
+      if (message === "User not found") {
+        toast("No account found. Please sign up first 🍨", {
+          icon: "ℹ️",
+        });
+
+        setTimeout(() => {
+          navigate("/signup");
+        }, 1000);
+      } else if (message === "Invalid credentials") {
+        toast.error("Incorrect password. Try again.");
+      } else {
+        toast.error("Login failed. Please try again.");
+      }
+    }
   };
 
   return (
