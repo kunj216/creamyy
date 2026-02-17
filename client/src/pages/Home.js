@@ -64,7 +64,7 @@ function Home() {
           transition={{ duration: 1 }}
           className="relative z-10 text-white max-w-2xl px-6"
         >
-          <h1 className="text-6xl font-heading font-bold mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl  font-heading font-bold mb-6">
             Indulge in Luxury Scoops 🍨
           </h1>
 
@@ -92,7 +92,7 @@ function Home() {
                 transition: { staggerChildren: 0.2 },
               },
             }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
           >
             {recommendations.map((product) => (
               <motion.div
@@ -128,7 +128,7 @@ function Home() {
           Top Selling Flavors
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {topSelling.map((product) => (
             <div
               key={product._id}

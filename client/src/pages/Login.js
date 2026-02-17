@@ -41,7 +41,7 @@ function Login() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-pink-50">
-      <div className="bg-white p-8 rounded-2xl shadow-lg w-96">
+      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center text-pink-600 mb-6">
           Login to Creamyy 🍨
         </h2>
