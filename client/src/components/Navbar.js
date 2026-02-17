@@ -73,7 +73,7 @@ function Navbar() {
       {/* Mobile Dropdown */}
       {menuOpen && (
         <div className="md:hidden bg-white border-t shadow-md">
-          <div className="flex flex-col items-start px-6 py-6 space-y-5 text-gray-700 font-medium">
+          <div className="flex flex-col items-start px-6 py-6 space-y-5 text-gray-700 font-medium gap-2">
             <Link
               to="/menu"
               onClick={() => setMenuOpen(false)}
