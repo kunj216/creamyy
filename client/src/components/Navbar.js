@@ -14,17 +14,24 @@ function Navbar() {
   );
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b px-6 py-4">
-
-      <div className="flex justify-between items-center">
+    <nav className="sticky top-0 z-50 bg-white shadow-md">
+      <div className="flex justify-between items-center px-4 py-4">
 
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-gray-900">
+        <Link to="/" className="text-xl font-bold text-gray-900">
           Creamyy 🍨
         </Link>
 
+        {/* Hamburger (Mobile Only) */}
+        <button
+          className="md:hidden text-3xl"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? "✕" : "☰"}
+        </button>
+
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6 font-medium">
 
           <Link to="/menu" className="hover:text-pink-500">
             Menu
@@ -68,22 +75,13 @@ function Navbar() {
               </Link>
             </>
           )}
-
         </div>
-
-        {/* Mobile Hamburger */}
-        <button
-          className="md:hidden text-2xl"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          ☰
-        </button>
 
       </div>
 
       {/* Mobile Dropdown */}
       {menuOpen && (
-        <div className="md:hidden mt-4 flex flex-col space-y-4">
+        <div className="md:hidden bg-white border-t px-4 py-4 space-y-4 font-medium">
 
           <Link to="/menu" onClick={() => setMenuOpen(false)}>
             Menu
@@ -107,7 +105,14 @@ function Navbar() {
           )}
 
           {user ? (
-            <button onClick={logout}>Logout</button>
+            <button
+              onClick={() => {
+                logout();
+                setMenuOpen(false);
+              }}
+            >
+              Logout
+            </button>
           ) : (
             <>
               <Link to="/login" onClick={() => setMenuOpen(false)}>
@@ -118,10 +123,8 @@ function Navbar() {
               </Link>
             </>
           )}
-
         </div>
       )}
-
     </nav>
   );
 }
