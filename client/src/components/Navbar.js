@@ -8,15 +8,11 @@ function Navbar() {
   const { openCart, cartItems } = useContext(CartContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const cartCount = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-md">
       <div className="flex justify-between items-center px-4 py-4">
-
         {/* Logo */}
         <Link to="/" className="text-xl font-bold text-gray-900">
           Creamyy 🍨
@@ -32,7 +28,6 @@ function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-6 font-medium">
-
           <Link to="/menu" className="hover:text-pink-500">
             Menu
           </Link>
@@ -44,10 +39,7 @@ function Navbar() {
           )}
 
           {user && (
-            <button
-              onClick={openCart}
-              className="relative hover:text-pink-500"
-            >
+            <button onClick={openCart} className="relative hover:text-pink-500">
               Cart
               {cartCount > 0 && (
                 <span className="absolute -top-2 -right-4 bg-pink-500 text-white text-xs px-2 rounded-full">
@@ -76,53 +68,72 @@ function Navbar() {
             </>
           )}
         </div>
-
       </div>
 
       {/* Mobile Dropdown */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t px-4 py-4 space-y-4 font-medium">
-
-          <Link to="/menu" onClick={() => setMenuOpen(false)}>
-            Menu
-          </Link>
-
-          {user?.role === "admin" && (
-            <Link to="/admin" onClick={() => setMenuOpen(false)}>
-              Admin
+        <div className="md:hidden bg-white border-t shadow-md">
+          <div className="flex flex-col items-start px-6 py-6 space-y-5 text-gray-700 font-medium">
+            <Link
+              to="/menu"
+              onClick={() => setMenuOpen(false)}
+              className="text-lg hover:text-pink-500 transition"
+            >
+              Menu
             </Link>
-          )}
 
-          {user && (
-            <button
-              onClick={() => {
-                openCart();
-                setMenuOpen(false);
-              }}
-            >
-              Cart ({cartCount})
-            </button>
-          )}
+            {user?.role === "admin" && (
+              <Link
+                to="/admin"
+                onClick={() => setMenuOpen(false)}
+                className="text-lg hover:text-pink-500 transition"
+              >
+                Admin
+              </Link>
+            )}
 
-          {user ? (
-            <button
-              onClick={() => {
-                logout();
-                setMenuOpen(false);
-              }}
-            >
-              Logout
-            </button>
-          ) : (
-            <>
-              <Link to="/login" onClick={() => setMenuOpen(false)}>
-                Login
-              </Link>
-              <Link to="/signup" onClick={() => setMenuOpen(false)}>
-                Signup
-              </Link>
-            </>
-          )}
+            {user && (
+              <button
+                onClick={() => {
+                  openCart();
+                  setMenuOpen(false);
+                }}
+                className="text-lg hover:text-pink-500 transition"
+              >
+                Cart ({cartCount})
+              </button>
+            )}
+
+            {user ? (
+              <button
+                onClick={() => {
+                  logout();
+                  setMenuOpen(false);
+                }}
+                className="w-full text-left text-lg bg-gray-900 text-white px-4 py-2 rounded-lg"
+              >
+                Logout
+              </button>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  onClick={() => setMenuOpen(false)}
+                  className="text-lg hover:text-pink-500 transition"
+                >
+                  Login
+                </Link>
+
+                <Link
+                  to="/signup"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full bg-gray-900 text-white px-4 py-2 rounded-lg text-center"
+                >
+                  Signup
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       )}
     </nav>
