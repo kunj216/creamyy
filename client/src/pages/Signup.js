@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function Signup() {
   const [name, setName] = useState("");
@@ -18,13 +19,26 @@ function Signup() {
       const { data } = await api.post("/auth/register", {
         name,
         email,
-        password
+        password,
       });
 
       login(data);
       navigate("/");
     } catch (error) {
-      alert(error.response?.data?.message || "Signup failed");
+      const status = error.response?.status;
+      const message = error.response?.data?.message;
+
+      if (status === 400 && message === "User already exists") {
+        toast("Account already exists. Please login 🍨", {
+          icon: "ℹ️",
+        });
+
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
+      } else {
+        toast.error("Signup failed. Please try again.");
+      }
     }
   };
 
