@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { AuthContext } from "../context/AuthContext";
 import api from "../services/api";
+import toast from "react-hot-toast";
 
 function Cart() {
   const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
@@ -29,7 +30,7 @@ function Cart() {
         }
       );
 
-      alert("Order placed successfully!");
+      toast("Order placed successfully!");
       clearCart();
     } catch (error) {
       console.log(error);
