@@ -34,7 +34,7 @@ function Cart() {
       clearCart();
     } catch (error) {
       console.log(error);
-      alert("Checkout failed");
+      toast("Checkout failed");
     }
   };
 

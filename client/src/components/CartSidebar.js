@@ -36,11 +36,11 @@ function CartSidebar() {
         }
       );
 
-      alert("Order placed successfully!");
+      toast("Order placed successfully!");
       clearCart();
       closeCart();
     } catch (error) {
-      alert("Checkout failed");
+      toast("Checkout failed");
     }
   };
 
