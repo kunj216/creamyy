@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { AuthContext } from "../context/AuthContext";
 import api from "../services/api";
-
+import toast from "react-hot-toast";
 function CartSidebar() {
   const {
     cartItems,
